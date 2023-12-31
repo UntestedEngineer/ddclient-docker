@@ -16,8 +16,8 @@ _Note if running in a container "use=web" must be set since the application can 
 
 The following environment variables are relevant:
 ```
-- **DDNS_DAEMON_OR_ONESHOT** - specifies whether to run the application as a daemon or once (oneshot)
-- **DDNS_DAEMON_REFRESH_INTERVAL** - specifies how frequenty the application will run if DDNS_DAEMON_OR_ONESHOT is set to daemon (defaults to 30 seconds if not specified)
+- DDNS_DAEMON_OR_ONESHOT - specifies whether to run the application as a daemon or once (oneshot)
+- DDNS_DAEMON_REFRESH_INTERVAL - specifies how frequenty the application will run if DDNS_DAEMON_OR_ONESHOT is set to daemon (defaults to 30 seconds if not specified)
 ```
 
 ### Kubernetes
