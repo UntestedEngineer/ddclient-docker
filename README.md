@@ -1,6 +1,6 @@
 # ddclient docker
 
-This application is forked from [https://github.com/steasdal/ddclient-alpine](https://github.com/steasdal/ddclient-alpine) with heavy modifications.  Namely most of the environment variables have been removed and is now reliant on injecting a configuration during container creation.  The original files have been preserved for reference under the "Original Files" folder.  
+This application is forked from [https://github.com/steasdal/ddclient-alpine](https://github.com/steasdal/ddclient-alpine) with heavy modifications.  Namely most of the environment variables have been removed and is now reliant on injecting a configuration file during container creation.  The original files have been preserved for reference under the "Original Files" folder.  
 
 Original ddclient documentation can be located: [ddclient homepage](https://ddclient.net/)
 
@@ -14,10 +14,10 @@ _Note if running in a container "use=web" must be set since the application can 
 
 **Keep this config file in a secure location that is not easily accessible**
 
-The following environment are relevant:
+The following environment variables are relevant:
 ```
-- DDNS_DAEMON_OR_ONESHOT - specifies whether to run the application as a daemon or once (oneshot)
-- DDNS_DAEMON_REFRESH_INTERVAL - specifies how frequenty the application will run if DDNS_DAEMON_OR_ONESHOT is set to daemon (defaults to 30 seconds if not specified)
+- **DDNS_DAEMON_OR_ONESHOT** - specifies whether to run the application as a daemon or once (oneshot)
+- **DDNS_DAEMON_REFRESH_INTERVAL** - specifies how frequenty the application will run if DDNS_DAEMON_OR_ONESHOT is set to daemon (defaults to 30 seconds if not specified)
 ```
 
 ### Kubernetes
