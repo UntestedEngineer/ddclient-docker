@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddclient-example
+  namespace: example
+  labels:
+    app.kubernetes.io/instance: ddclient
+    app.kubernetes.io/name: ddclient
+    app.kubernetes.io/version: v1.0.0
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: ddclient
+      app.kubernetes.io/name: ddclient
+      app: ddclient
+  replicas: 1 # Request a single instance
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: ddclient
+        app.kubernetes.io/name: ddclient
+        app.kubernetes.io/version: v1.0.0
+        app: ddclient
+    spec:
+      volumes:
+        - name: ddclient-conf
+          secret:
+            secretName: ddclient-conf
+            items:
+            - key: ddclient.conf
+              path: ddclient.conf
+            defaultMode: 256
+      containers:
+      - name: ddclient
+        image: untestedengineer/ddclient-docker:v1.0.0-alpine
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "125m"
+        env:
+        - name: DDNS_DAEMON_OR_ONESHOT
+          value: "daemon"
+        - name: DDNS_DAEMON_REFRESH_INTERVAL
+          value: "300"
+        volumeMounts:
+          - name: ddclient-conf
+            mountPath: /etc/ddclient/ddclient.conf
+            subPath: ddclient.conf
+            readOnly: true
+

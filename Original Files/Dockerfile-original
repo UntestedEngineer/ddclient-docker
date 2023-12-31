@@ -1,6 +1,7 @@
-FROM alpine:3.19.0
+FROM alpine:latest
 
 RUN apk upgrade --no-cache && apk add --no-cache perl perl-io-socket-ssl curl
 COPY ddclient /usr/sbin/ddclient
+# COPY ddclient.conf /etc/ddclient.conf.original
 COPY entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
