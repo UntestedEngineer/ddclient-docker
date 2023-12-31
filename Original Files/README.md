@@ -41,5 +41,3 @@ services:
     volumes:
       - <host_directory>:/etc/ddclient/:ro
 ```
-
-
